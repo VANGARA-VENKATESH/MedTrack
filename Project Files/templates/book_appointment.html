@@ -1,0 +1,109 @@
+<!-- templates/book_appointment.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Appointment - MedTrack</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('/static/appointment_bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 100px auto;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px #aaa;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            text-align: left;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .cta-button {
+            margin-top: 20px;
+            width: 100%;
+            background-color: #007bff;
+            border: none;
+            padding: 12px;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: #0056b3;
+        }
+
+        .main-header {
+            background-color: rgba(0, 102, 204, 0.8);
+            padding: 20px;
+            color: white;
+            text-align: center;
+        }
+
+        .navbar a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <h2>Book Appointment</h2>
+        <nav class="navbar">
+            <a href="/templates/home_page.html">Home</a>
+            <a href="/templates/dashboard.html">Dashboard</a>
+            <a href="/templates/logout.html">Logout</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <h3>Fill the Appointment Form</h3>
+            <form action="/book_appointment" method="POST">
+                <label for="doctor">Choose Doctor:</label>
+                <select name="doctor" id="doctor" required>
+                    <option value="">-- Select Doctor --</option>
+                    <option value="Dr. VENKATESH">Dr. VENKATESH</option>
+                    <option value="Dr. RAVI KUMAR">Dr. RAVI KUMAR</option>
+                    <option value="Dr. SINDHU SHARMA">Dr. SINDHU SHARMA</option>
+                </select>
+
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+
+                <label for="time">Time:</label>
+                <input type="time" id="time" name="time" required>
+
+                <button type="submit" class="cta-button">Book Appointment</button>
+            </form>
+        </div>
+    </main>
+
+</body>
+</html>

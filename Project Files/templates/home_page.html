@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MedTrack - Cloud Healthcare System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        .horizontal-images {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .horizontal-images img {
+            width: 300px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-left">
+            <img src="/static/med_track_logo.png" height="50" >
+            <span class="logo-text">MedTrack</span>
+        </div>
+
+        <nav class="navbar">
+            <a href="/templates/index.html">Home</a>
+            <a href="/templates/dashboard.html">Dashboard</a>
+            <a href="/templates/patient_dashboard.html">Patient Dashboard</a>
+            <a href="/templates/doctor_dashboard.html">Doctor Dashboard</a>
+            <a href="/templates/book_appointment.html">Book Appointment</a>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <h1>Welcome to MedTrack</h1>
+        <p>Your cloud-enabled healthcare management system.</p>
+        
+        <div class="horizontal-images">
+            <img src="/static/about-bg.jpg" alt="About Background">
+            <img src="/static/author-image.jpg" alt="Author">
+            <img src="/static/slider3.jpg" alt="Slider">
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2025 MedTrack. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
