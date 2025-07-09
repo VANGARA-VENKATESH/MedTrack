@@ -87,7 +87,7 @@ def doctor_dashboard():
 @login_required
 def patient_dashboard():
     return render_template('patient_dashboard.html')
-
+    
 @app.route('/book_appointment', methods=['GET', 'POST'])
 @login_required
 def book_appointment():
@@ -102,8 +102,45 @@ def book_appointment():
         }
         appointments.append(appointment)
         flash('Appointment booked successfully.')
+
+        # ---------------------- Send Confirmation Email ---------------------
+        try:
+            import smtplib
+            from dotenv import load_dotenv
+            import os
+
+            load_dotenv()
+            SENDER_EMAIL = os.getenv('SENDER_EMAIL')
+            SENDER_PASSWORD = os.getenv('SENDER_PASSWORD')
+
+            server = smtplib.SMTP('smtp.gmail.com', 587)
+            server.starttls()
+            server.login(SENDER_EMAIL, SENDER_PASSWORD)
+
+            subject = "Appointment Confirmation - MedTrack"
+            body = f"""
+            Hello {appointment['patient']},
+
+            Your appointment with Dr. {appointment['doctor']} has been booked successfully.
+            Date: {appointment['date']}
+            Time: {appointment['time']}
+
+            Thank you for using MedTrack.
+
+            Regards,
+            MedTrack Team
+            """
+            message = f"Subject: {subject}\n\n{body}"
+            server.sendmail(SENDER_EMAIL, appointment['email'], message)
+            server.quit()
+        except Exception as e:
+            print("Email sending failed:", str(e))
+
         return redirect(url_for('view_appointments'))
+    
     return render_template('book_appointment.html')
+
+
 
 @app.route('/view_appointments')
 @login_required
