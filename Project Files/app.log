@@ -1,0 +1,9 @@
+import logging
+from dotenv import load_dotenv
+import os
+
+load_dotenv()  # Load environment variables from .env
+
+# Set up logging
+logging.basicConfig(filename='app.log', level=logging.INFO,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
