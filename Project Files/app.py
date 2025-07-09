@@ -2,6 +2,18 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 from datetime import datetime
 from functools import wraps
 
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Access environment variables
+SNS_TOPIC_ARN = os.getenv('SNS_TOPIC_ARN')
+AWS_REGION = os.getenv('AWS_REGION')
+SENDER_EMAIL = os.getenv('SENDER_EMAIL')
+SENDER_PASSWORD = os.getenv('SENDER_PASSWORD')
+
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Replace with a secure key in production
 
